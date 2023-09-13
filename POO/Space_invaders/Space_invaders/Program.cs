@@ -19,10 +19,10 @@ while (true)
         switch (keyPressed.Key)
         {
             case ConsoleKey.A:
-                player.PlayerMovementUpdate(-1);
+                player.PlayerMovementUpdate(-1 * player._vitesse);
                 break;
             case ConsoleKey.D:
-                player.PlayerMovementUpdate(1);
+                player.PlayerMovementUpdate(1 * player._vitesse);
                 break;
             case ConsoleKey.Spacebar:
                 ammoShotList.Add(new Ammo(player._x + 2));
@@ -33,11 +33,17 @@ while (true)
     }
 
     player.PlayerMovementUpdate(0);
-    foreach (Ammo ammoShot in ammoShotList)
+    if (ammoShotList.Count > 0)
     {
-        ammoShot.AmmoUpdate();
+        for (int i = ammoShotList.Count - 1; i >= 0; i--)
+        {
+            ammoShotList[i].AmmoUpdate();
+            if (ammoShotList[i]._y == 0)
+            {
+                ammoShotList.Remove(ammoShotList[i]);
+            }
+        }
     }
-
     
     Console.Clear();
     foreach (Ammo ammoShot in ammoShotList)

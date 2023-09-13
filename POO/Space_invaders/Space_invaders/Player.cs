@@ -8,7 +8,8 @@ namespace Space_invaders
 {
     internal class Player
     {
-        public int _x;
+        public int _vitesse = 2;
+        public int _x = 75;
         private int _y = 30;
         private string[] _spriteShip =
       {
@@ -19,7 +20,14 @@ namespace Space_invaders
      };
         public void PlayerMovementUpdate(int move)
         {
-            _x += move;
+            if (_x + move < 20 + 5|| _x + move + 5> 135)
+            {
+                move = 0;
+            }
+            else
+            {
+                _x += move;
+            }
         }
         public void Show()
         {
