@@ -7,6 +7,12 @@ Console.SetWindowSize(Config.SCREEN_WIDTH, Config.SCREEN_HEIGHT);
 ConsoleKeyInfo keyPressed;
 
 List<Ammo> ammoShotList = new List<Ammo>();
+List<Enemy> nbrEnemyList = new List<Enemy>();
+
+for (int i = 0; i < 10; i++)
+{
+    nbrEnemyList.Add(new Enemy(i * 5 + 50));
+}
 
 Player player = new Player();
 while (true)
@@ -19,10 +25,10 @@ while (true)
         switch (keyPressed.Key)
         {
             case ConsoleKey.A:
-                player.PlayerMovementUpdate(-1 * player._vitesse);
+                player.PlayerMovementUpdate(-1 * player._speed);
                 break;
             case ConsoleKey.D:
-                player.PlayerMovementUpdate(1 * player._vitesse);
+                player.PlayerMovementUpdate(1 * player._speed);
                 break;
             case ConsoleKey.Spacebar:
                 ammoShotList.Add(new Ammo(player._x + 2));
@@ -44,11 +50,32 @@ while (true)
             }
         }
     }
-    
+
+
+    foreach (Enemy nbrEnemy in nbrEnemyList)
+    {
+        if (nbrEnemy._x > 125 || nbrEnemy._x < 25)
+        {
+            foreach(Enemy nbrEnemy2 in nbrEnemyList)
+            {
+                nbrEnemy2.Down();
+            }
+        }
+    }
+
+    foreach (Enemy nbrEnemy in nbrEnemyList)
+    {
+        nbrEnemy.UpdateEnemy();
+    }
+
     Console.Clear();
     foreach (Ammo ammoShot in ammoShotList)
     {
         ammoShot.Show();
+    }
+    foreach (Enemy nbrEnemy in nbrEnemyList)
+    {
+        nbrEnemy.Show();
     }
     player.Show();
     Thread.Sleep(50);

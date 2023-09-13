@@ -8,7 +8,7 @@ namespace Space_invaders
 {
     internal class Player
     {
-        public int _vitesse = 2;
+        public int _speed = 2;
         public int _x = 75;
         private int _y = 30;
         private string[] _spriteShip =
@@ -37,6 +37,7 @@ namespace Space_invaders
                 Console.WriteLine(_spriteShip[i]);
             }
         }
+
 
     }
 }
