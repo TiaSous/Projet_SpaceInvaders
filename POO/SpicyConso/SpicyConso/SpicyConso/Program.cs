@@ -1,11 +1,14 @@
-﻿using Space_invaders;
-using Model;
+﻿using Model;
+using Display;
+using System.Numerics;
 
 Console.CursorVisible = false;
 Console.SetWindowSize(Config.SCREEN_WIDTH, Config.SCREEN_HEIGHT);
 
 //récupère l'input du clavier
 ConsoleKeyInfo keyPressed;
+
+Playground playground = new Playground();
 
 List<Ammo> ammoShotList = new List<Ammo>();
 List<Enemy> nbrEnemyList = new List<Enemy>();
@@ -59,7 +62,7 @@ while (true)
         {
             foreach(Enemy nbrEnemy2 in nbrEnemyList)
             {
-                nbrEnemy2.Down();
+                playground.Down(nbrEnemy2);
             }
         }
     }
@@ -72,13 +75,13 @@ while (true)
 
     foreach (Ammo ammoShot in ammoShotList)
     {
-        ammoShot.Show();
+        playground.Show(ammoShot);
     }
     foreach (Enemy nbrEnemy in nbrEnemyList)
     {
-        nbrEnemy.Show();
+        playground.Show(nbrEnemy);
     }
-    player.Show();
+    playground.Show(player);
 
     Thread.Sleep(100);
 }
