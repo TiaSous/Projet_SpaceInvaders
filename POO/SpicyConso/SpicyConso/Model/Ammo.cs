@@ -25,7 +25,7 @@ namespace Model
             }
             else
             {
-                this._y -= 2;
+                this._y -= 1;
             }
             
         }

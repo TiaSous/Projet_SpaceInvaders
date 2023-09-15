@@ -2,13 +2,13 @@
 using Display;
 using System.Numerics;
 
-Console.CursorVisible = false;
-Console.SetWindowSize(Config.SCREEN_WIDTH, Config.SCREEN_HEIGHT);
+Playground playground = new Playground();
+playground.Init();
 
 //récupère l'input du clavier
 ConsoleKeyInfo keyPressed;
 
-Playground playground = new Playground();
+
 
 List<Ammo> ammoShotList = new List<Ammo>();
 List<Enemy> nbrEnemyList = new List<Enemy>();
@@ -58,7 +58,7 @@ while (true)
     }
     foreach (Enemy nbrEnemy in nbrEnemyList)
     {
-        if (nbrEnemy._x > 125 || nbrEnemy._x < 25)
+        if (nbrEnemy._x > ConfigWorld.WORLD_WIDTH_RIGHT || nbrEnemy._x < ConfigWorld.WORLD_WIDTH_LEFT)
         {
             foreach(Enemy nbrEnemy2 in nbrEnemyList)
             {

@@ -14,7 +14,7 @@ namespace Model
         
         public void PlayerMovementUpdate(int move)
         {
-            if (_x + move < 20 + 5|| _x + move + 5> 135)
+            if (_x + move < ConfigWorld.WORLD_WIDTH_LEFT|| _x + move > ConfigWorld.WORLD_WIDTH_RIGHT)
             {
                 move = 0;
             }

@@ -16,9 +16,10 @@ namespace Display
              "{@v@}","/\" \"\\"
         };
         private string[] _spriteAmmo = { "|" };
-        public static void Init()
+        public void Init()
         {
             Console.CursorVisible = false;
+            Console.SetWindowSize(Config.SCREEN_WIDTH, Config.SCREEN_HEIGHT);
         }
         public void Show(Player player)
         {
