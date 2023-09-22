@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Model
 {
     public class Enemy
     {
-        public int RightOrLeft = 1;
+        private int RightOrLeft = 1;
         public int _x;
         public int _y;
 
@@ -21,6 +16,10 @@ namespace Model
         {
             _x += 2 * RightOrLeft;
         }
-        
+        public void Down()
+        {
+            this._y += 2;
+            this.RightOrLeft *= -1;
+        }
     }
 }

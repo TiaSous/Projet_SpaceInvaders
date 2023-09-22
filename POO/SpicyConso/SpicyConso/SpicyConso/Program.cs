@@ -62,7 +62,7 @@ while (true)
         {
             foreach(Enemy nbrEnemy2 in nbrEnemyList)
             {
-                playground.Down(nbrEnemy2);
+                nbrEnemy2.Down();
             }
         }
     }

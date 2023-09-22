@@ -11,7 +11,7 @@ namespace Display
          @"|||||",
          @" | | ",
      };
-        public string[] _spriteEnemy =
+        private string[] _spriteEnemy =
     {
              "{@v@}","/\" \"\\"
         };
@@ -37,11 +37,7 @@ namespace Display
                 Console.WriteLine(_spriteEnemy[i]);
             }
         }
-        public void Down(Enemy enemy)
-        {
-            enemy._y += _spriteEnemy.Length;
-            enemy.RightOrLeft *= -1;
-        }
+
         public void Show(Ammo ammo)
         {
             for (int i = 0; i < _spriteAmmo.Length; i++)
