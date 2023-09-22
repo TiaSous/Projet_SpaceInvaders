@@ -10,8 +10,9 @@ namespace Model
     {
         public int _speed = 2;
         public int _x = 75;
-        public int _y = 30;
-        
+        public int _y = ConfigWorld.POSITION_Y_PLAYER_FOR_START;
+
+
         public void PlayerMovementUpdate(int move)
         {
             if (_x + move < ConfigWorld.WORLD_WIDTH_LEFT|| _x + move > ConfigWorld.WORLD_WIDTH_RIGHT)

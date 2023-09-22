@@ -23,10 +23,9 @@ for (int i = 0; i < 10; i++)
 
 while (true)
 {
-
+    //input
     if (Console.KeyAvailable)
     {
-        //lit l'input
         keyPressed = Console.ReadKey(true);
         switch (keyPressed.Key)
         {
@@ -44,6 +43,7 @@ while (true)
         }
     }
 
+    //update
     player.PlayerMovementUpdate(0);
     if (ammoShotList.Count > 0)
     {
@@ -55,12 +55,28 @@ while (true)
                 ammoShotList.Remove(ammoShotList[i]);
             }
         }
+        for (int i = nbrEnemyList.Count - 1; i >= 0; i--)
+        {
+            for (int a = ammoShotList.Count - 1 ; a >= 0; a--)
+            {
+                if (ammoShotList[a]._x >= nbrEnemyList[i]._x && ammoShotList[a]._x <= nbrEnemyList[i]._x + 4)
+                {
+                    if (ammoShotList[a]._y >= nbrEnemyList[i]._y && ammoShotList[a]._y <= nbrEnemyList[i]._y + 1)
+                    {
+                        ammoShotList.Remove(ammoShotList[a]);
+                        nbrEnemyList.Remove(nbrEnemyList[i]);
+                        break;
+                    }
+                }
+            }
+        }
     }
+    
     foreach (Enemy nbrEnemy in nbrEnemyList)
     {
         if (nbrEnemy._x > ConfigWorld.WORLD_WIDTH_RIGHT || nbrEnemy._x < ConfigWorld.WORLD_WIDTH_LEFT)
         {
-            foreach(Enemy nbrEnemy2 in nbrEnemyList)
+            foreach (Enemy nbrEnemy2 in nbrEnemyList)
             {
                 nbrEnemy2.Down();
             }
@@ -70,9 +86,9 @@ while (true)
     {
         nbrEnemy.UpdateEnemy();
     }
-
     Console.Clear();
 
+    //draw
     foreach (Ammo ammoShot in ammoShotList)
     {
         playground.Show(ammoShot);

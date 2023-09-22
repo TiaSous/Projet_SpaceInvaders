@@ -9,7 +9,7 @@ namespace Model
     public class Ammo
     {
         public int _x;
-        public int _y = 30;
+        public int _y = ConfigWorld.POSITION_Y_PLAYER_FOR_START;
 
 
         public Ammo(int x)
