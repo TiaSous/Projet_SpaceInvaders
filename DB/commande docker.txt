@@ -69,12 +69,12 @@ Requête 7 : SELECT t1.jouPseudo, t2.idCommande FROM t_joueur AS t1 LEFT JOIN t_
 
 Requête 8 : SELECT t1.jouPseudo, t2.idCommande FROM t_joueur AS t1 RIGHT JOIN t_commande AS t2 ON t2.fkJoueur = t1.idJoueur;
 
-Requête 9 : SELECT idJoueur, COUNT(fkArme*detQuantiteCommande) FROM t_joueur t1 LEFT JOIN t_commande t2 ON t1.idJoueur = t2.fkJoueur LEFT JOIN t_detail_commande t3 ON t2.idCommande = t3.fkCommande GROUP BY t1.idJoueur;
+Requête 9 : SELECT idJoueur, SUM(detQuantiteCommande) FROM t_joueur t1 LEFT JOIN t_commande t2 ON t1.idJoueur = t2.fkJoueur LEFT JOIN t_detail_commande t3 ON t2.idCommande = t3.fkCommande GROUP BY t1.idJoueur;
 
-Requête 10 : SELECT idJoueur, COUNT(fkArme*detQuantiteCommande) FROM t_joueur t1 LEFT JOIN t_commande t2 ON t1.idJoueur = t2.fkJoueur LEFT JOIN t_detail_commande t3 ON t2.idCommande = t3.fkCommande GROUP BY t1.idJoueur;
-
-
-
+Requête 10 : SELECT t1.jouPseudo,COUNT(DISTINCT fkArme) FROM t_joueur t1 
+JOIN t_commande t2 ON t1.idJoueur = t2.fkJoueur 
+JOIN t_detail_commande t3 ON t2.idCommande = t3.fkCommande 
+GROUP BY t1.idJoueur HAVING COUNT(DISTINCT fkArme) > 3;
 
 
 
