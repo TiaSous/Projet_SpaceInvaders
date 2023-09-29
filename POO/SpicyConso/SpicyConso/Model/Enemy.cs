@@ -6,6 +6,7 @@ namespace Model
         private int RightOrLeft = 1;
         public int _x;
         public int _y;
+        private const int NBRCASEDEPLACE = 3;
 
         public Enemy(int x)
         {
@@ -14,7 +15,7 @@ namespace Model
         
         public void UpdateEnemy()
         {
-            _x += 2 * RightOrLeft;
+            _x += NBRCASEDEPLACE * RightOrLeft;
         }
         public void Down()
         {

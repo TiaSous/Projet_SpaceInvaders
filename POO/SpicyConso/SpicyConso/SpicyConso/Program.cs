@@ -14,6 +14,8 @@ List<Ammo> ammoShotList = new List<Ammo>();
 List<Enemy> nbrEnemyList = new List<Enemy>();
 Player player = new Player();
 
+int frameNumber = 0;
+
 
 for (int i = 0; i < 10; i++)
 {
@@ -57,7 +59,7 @@ while (true)
         }
         for (int i = nbrEnemyList.Count - 1; i >= 0; i--)
         {
-            for (int a = ammoShotList.Count - 1 ; a >= 0; a--)
+            for (int a = ammoShotList.Count - 1; a >= 0; a--)
             {
                 if (ammoShotList[a]._x >= nbrEnemyList[i]._x && ammoShotList[a]._x <= nbrEnemyList[i]._x + 4)
                 {
@@ -71,20 +73,25 @@ while (true)
             }
         }
     }
-    
-    foreach (Enemy nbrEnemy in nbrEnemyList)
+    if (frameNumber % 5 == 0)
     {
-        if (nbrEnemy._x > ConfigWorld.WORLD_WIDTH_RIGHT || nbrEnemy._x < ConfigWorld.WORLD_WIDTH_LEFT)
+        //enemies go down
+        foreach (Enemy nbrEnemy in nbrEnemyList)
         {
-            foreach (Enemy nbrEnemy2 in nbrEnemyList)
+            if (nbrEnemy._x > ConfigWorld.WORLD_WIDTH_RIGHT || nbrEnemy._x < ConfigWorld.WORLD_WIDTH_LEFT)
             {
-                nbrEnemy2.Down();
+                foreach (Enemy nbrEnemy2 in nbrEnemyList)
+                {
+                    nbrEnemy2.Down();
+                }
             }
         }
-    }
-    foreach (Enemy nbrEnemy in nbrEnemyList)
-    {
-        nbrEnemy.UpdateEnemy();
+
+        //enemies update
+        foreach (Enemy nbrEnemy in nbrEnemyList)
+        {
+            nbrEnemy.UpdateEnemy();
+        }
     }
     Console.Clear();
 
@@ -98,6 +105,10 @@ while (true)
         playground.Show(nbrEnemy);
     }
     playground.Show(player);
-
-    Thread.Sleep(100);
+    if(frameNumber == 100)
+    {
+        frameNumber = 0;
+    }
+    frameNumber++;
+    Thread.Sleep(1);
 }
