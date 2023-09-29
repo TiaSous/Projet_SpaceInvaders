@@ -16,6 +16,17 @@ namespace Display
              "{@v@}","/\" \"\\"
         };
         private string[] _spriteAmmo = { "|" };
+        private string[] _titleMainMenu = 
+            {
+
+            "███████╗██████╗  █████╗  ██████╗███████╗    ██╗███╗   ██╗██╗   ██╗ █████╗ ██████╗ ███████╗██████╗ ███████╗",
+            "██╔════╝██╔══██╗██╔══██╗██╔════╝██╔════╝    ██║████╗  ██║██║   ██║██╔══██╗██╔══██╗██╔════╝██╔══██╗██╔════╝",
+            "███████╗██████╔╝███████║██║     █████╗      ██║██╔██╗ ██║██║   ██║███████║██║  ██║█████╗  ██████╔╝███████╗",
+            "╚════██║██╔═══╝ ██╔══██║██║     ██╔══╝      ██║██║╚██╗██║╚██╗ ██╔╝██╔══██║██║  ██║██╔══╝  ██╔══██╗╚════██║",
+            "███████║██║     ██║  ██║╚██████╗███████╗    ██║██║ ╚████║ ╚████╔╝ ██║  ██║██████╔╝███████╗██║  ██║███████║",
+            "╚══════╝╚═╝     ╚═╝  ╚═╝ ╚═════╝╚══════╝    ╚═╝╚═╝  ╚═══╝  ╚═══╝  ╚═╝  ╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝╚══════╝"
+        };
+        private int _widthTitleMainMenu = 105;
         public void Init()
         {
             Console.CursorVisible = false;
@@ -44,6 +55,15 @@ namespace Display
             {
                 Console.SetCursorPosition(ammo._x, ammo._y + i);
                 Console.WriteLine(_spriteAmmo[i]);
+            }
+        }
+
+        public void ShowTitleMainMenu()
+        {
+            for (int i = 0; i < _titleMainMenu.Length; i++)
+            { 
+                Console.SetCursorPosition(Config.SCREEN_WIDTH/2 - Math.Abs(_widthTitleMainMenu/2), 5 + i);
+                Console.WriteLine(_titleMainMenu[i]);
             }
         }
     }

@@ -5,6 +5,8 @@ using System.Numerics;
 Playground playground = new Playground();
 playground.Init();
 
+playground.ShowTitleMainMenu();
+Console.ReadLine();
 //récupère l'input du clavier
 ConsoleKeyInfo keyPressed;
 
