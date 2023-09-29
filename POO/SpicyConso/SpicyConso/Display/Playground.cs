@@ -16,8 +16,9 @@ namespace Display
              "{@v@}","/\" \"\\"
         };
         private string[] _spriteAmmo = { "|" };
+
         private string[] _titleMainMenu = 
-            {
+        {
 
             "███████╗██████╗  █████╗  ██████╗███████╗    ██╗███╗   ██╗██╗   ██╗ █████╗ ██████╗ ███████╗██████╗ ███████╗",
             "██╔════╝██╔══██╗██╔══██╗██╔════╝██╔════╝    ██║████╗  ██║██║   ██║██╔══██╗██╔══██╗██╔════╝██╔══██╗██╔════╝",
@@ -27,10 +28,58 @@ namespace Display
             "╚══════╝╚═╝     ╚═╝  ╚═╝ ╚═════╝╚══════╝    ╚═╝╚═╝  ╚═══╝  ╚═══╝  ╚═╝  ╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝╚══════╝"
         };
         private int _widthTitleMainMenu = 105;
-        public void Init()
+
+        private string[] _titleOption = 
+        {
+           "  ██████╗ ██████╗ ████████╗██╗ ██████╗ ███╗   ██╗",
+           " ██╔═══██╗██╔══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║",
+           " ██║   ██║██████╔╝   ██║   ██║██║   ██║██╔██╗ ██║",
+           " ██║   ██║██╔═══╝    ██║   ██║██║   ██║██║╚██╗██║",
+           " ╚██████╔╝██║        ██║   ██║╚██████╔╝██║ ╚████║",
+           "  ╚═════╝ ╚═╝        ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝"
+        };
+        private int _widthTitleOption = 49;
+
+        private string[] _titleRegles = {
+
+           "██████╗ ███████╗ ██████╗ ██╗     ███████╗███████╗",
+           "██╔══██╗██╔════╝██╔════╝ ██║     ██╔════╝██╔════╝",
+           "██████╔╝█████╗  ██║  ███╗██║     █████╗  ███████╗",
+           "██╔══██╗██╔══╝  ██║   ██║██║     ██╔══╝  ╚════██║",
+           "██║  ██║███████╗╚██████╔╝███████╗███████╗███████║",
+           "╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚══════╝╚══════╝╚══════╝"
+        };
+        private int _widthTitleRegles = 49;
+
+        private string[] _titleClassement = { 
+        
+           "  ██████╗██╗      █████╗ ███████╗███████╗███████╗███╗   ███╗███████╗███╗   ██╗████████╗",
+           " ██╔════╝██║     ██╔══██╗██╔════╝██╔════╝██╔════╝████╗ ████║██╔════╝████╗  ██║╚══██╔══╝",
+           " ██║     ██║     ███████║███████╗███████╗█████╗  ██╔████╔██║█████╗  ██╔██╗ ██║   ██║   ",
+           " ██║     ██║     ██╔══██║╚════██║╚════██║██╔══╝  ██║╚██╔╝██║██╔══╝  ██║╚██╗██║   ██║   ",
+           " ╚██████╗███████╗██║  ██║███████║███████║███████╗██║ ╚═╝ ██║███████╗██║ ╚████║   ██║   ",
+           "  ╚═════╝╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝   ╚═╝   "
+        };
+        private int _widthTitleClassement = 87;
+
+        public string[] _mainMenu =
+        {
+            "Jouer",
+            "Classement",
+            "Option",
+            "Règles",
+            "Quitter"
+        };
+        private string _cursor = ">";
+        
+        private int _startTitleHeight = 5;
+        public int _startMenuHeight = 15;
+        public void Init(Cursor cursor)
         {
             Console.CursorVisible = false;
             Console.SetWindowSize(Config.SCREEN_WIDTH, Config.SCREEN_HEIGHT);
+            cursor._x = Config.SCREEN_WIDTH / 2 - 2;
+            cursor._y = _startMenuHeight + 1;
         }
         public void Show(Player player)
         {
@@ -62,9 +111,45 @@ namespace Display
         {
             for (int i = 0; i < _titleMainMenu.Length; i++)
             { 
-                Console.SetCursorPosition(Config.SCREEN_WIDTH/2 - Math.Abs(_widthTitleMainMenu/2), 5 + i);
+                Console.SetCursorPosition(Config.SCREEN_WIDTH/2 - _widthTitleMainMenu/2, _startTitleHeight + i);
                 Console.WriteLine(_titleMainMenu[i]);
             }
+            for (int i = 0; i < _mainMenu.Length; i++)
+            {
+                Console.SetCursorPosition(Config.SCREEN_WIDTH / 2, _startMenuHeight + 1 + i);
+                Console.WriteLine(_mainMenu[i]);
+            }
+        }
+
+        public void ShowOption()
+        {
+            for (int i = 0; i < _titleMainMenu.Length; i++)
+            {
+                Console.SetCursorPosition(Config.SCREEN_WIDTH / 2 - _widthTitleOption / 2, _startTitleHeight + i);
+                Console.WriteLine(_titleOption[i]);
+            }
+        }
+        public void ShowRegles()
+        {
+            for (int i = 0; i < _titleRegles.Length; i++)
+            {
+                Console.SetCursorPosition(Config.SCREEN_WIDTH / 2 - _widthTitleRegles / 2, _startTitleHeight + i);
+                Console.WriteLine(_titleRegles[i]);
+            }
+        }
+        public void ShowClassement()
+        {
+            for (int i = 0; i < _titleClassement.Length; i++)
+            {
+                Console.SetCursorPosition(Config.SCREEN_WIDTH / 2 - _widthTitleClassement / 2, _startTitleHeight + i);
+                Console.WriteLine(_titleClassement[i]);
+            }
+        }
+
+        public void Show(Cursor cursor)
+        {
+            Console.SetCursorPosition(cursor._x, cursor._y);
+            Console.Write(_cursor);
         }
     }
 }
