@@ -71,7 +71,9 @@ namespace Display
             "Quitter"
         };
         private string _cursor = ">";
-        
+
+        private string _score = "Score: ";
+
         private int _startTitleHeight = 5;
         public int _startMenuHeight = 15;
         public void Init(Cursor cursor)
@@ -150,6 +152,12 @@ namespace Display
         {
             Console.SetCursorPosition(cursor._x, cursor._y);
             Console.Write(_cursor);
+        }
+        
+        public void Show(Score score)
+        {
+            Console.SetCursorPosition(0, 0);
+            Console.Write(_score + score._score);
         }
     }
 }

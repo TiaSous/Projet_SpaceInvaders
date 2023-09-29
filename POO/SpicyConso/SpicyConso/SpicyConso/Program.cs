@@ -4,6 +4,7 @@ using System.Numerics;
 
 Playground playground = new Playground();
 
+Score score = new Score();
 Cursor cursor = new Cursor();
 playground.Init(cursor);
 
@@ -109,6 +110,7 @@ if (optionChoose == 1)
                         {
                             ammoShotList.Remove(ammoShotList[a]);
                             nbrEnemyList.Remove(nbrEnemyList[i]);
+                            score.AddScore();
                             break;
                         }
                     }
@@ -147,6 +149,7 @@ if (optionChoose == 1)
             playground.Show(nbrEnemy);
         }
         playground.Show(player);
+        playground.Show(score);
         if (frameNumber == 100)
         {
             frameNumber = 0;
