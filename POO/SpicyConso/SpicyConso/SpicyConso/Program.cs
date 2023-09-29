@@ -20,6 +20,7 @@ Player player = new Player();
 
 int frameNumber = 0;
 int optionChoose = 0;
+Random numberEnemie = new Random();
 
 do
 {
@@ -32,7 +33,7 @@ do
         switch (keyPressed.Key)
         {
             case ConsoleKey.UpArrow:
-                if(cursor._y == playground._startMenuHeight + 1)
+                if (cursor._y == playground._startMenuHeight + 1)
                 { }
                 else
                 {
@@ -117,25 +118,23 @@ if (optionChoose == 1)
                 }
             }
         }
-        if (frameNumber % 5 == 0)
+
+        //enemies go down
+        foreach (Enemy nbrEnemy in nbrEnemyList)
         {
-            //enemies go down
-            foreach (Enemy nbrEnemy in nbrEnemyList)
+            if (nbrEnemy._x > ConfigWorld.WORLD_WIDTH_RIGHT || nbrEnemy._x < ConfigWorld.WORLD_WIDTH_LEFT)
             {
-                if (nbrEnemy._x > ConfigWorld.WORLD_WIDTH_RIGHT || nbrEnemy._x < ConfigWorld.WORLD_WIDTH_LEFT)
+                foreach (Enemy nbrEnemy2 in nbrEnemyList)
                 {
-                    foreach (Enemy nbrEnemy2 in nbrEnemyList)
-                    {
-                        nbrEnemy2.Down();
-                    }
+                    nbrEnemy2.Down();
                 }
             }
+        }
 
-            //enemies update
-            foreach (Enemy nbrEnemy in nbrEnemyList)
-            {
-                nbrEnemy.UpdateEnemy();
-            }
+        //enemies update
+        foreach (Enemy nbrEnemy in nbrEnemyList)
+        {
+            nbrEnemy.UpdateEnemy();
         }
         Console.Clear();
 
@@ -152,6 +151,10 @@ if (optionChoose == 1)
         playground.Show(score);
         if (frameNumber == 100)
         {
+            for (int i = 0; i < numberEnemie.Next(1, 10); i++)
+            {
+                nbrEnemyList.Add(new Enemy(i * 5 + 50));
+            }
             frameNumber = 0;
         }
         frameNumber++;

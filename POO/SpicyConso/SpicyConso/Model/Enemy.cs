@@ -6,7 +6,7 @@ namespace Model
         private int RightOrLeft = 1;
         public int _x;
         public int _y;
-        private const int NBRCASEDEPLACE = 3;
+        private const int NBRCASEDEPLACE = 1;
 
         public Enemy(int x)
         {
