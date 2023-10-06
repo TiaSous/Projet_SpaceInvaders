@@ -16,7 +16,6 @@ ConsoleKeyInfo keyPressed;
 
 List<Ammo> ammoShotList = new List<Ammo>();
 List<Enemy> nbrEnemyList = new List<Enemy>();
-Score score = new Score();
 
 int frameNumber = 0;
 int optionChoose = 0;
@@ -62,8 +61,11 @@ while (optionChoose == 0);
 
 if (optionChoose == 1)
 {
+
+    Score score = new Score();
     Player player = new Player();
     Random numberEnemies = new Random();
+    bool gameFinish = false;
 
     for (int i = 0; i < 10; i++)
     {
@@ -183,8 +185,18 @@ if (optionChoose == 1)
         frameNumber++;
         Thread.Sleep(3);
         
+        foreach(Enemy nbrEnemy in nbrEnemyList)
+        {
+            if (nbrEnemy._y == player._y)
+            {
+                gameFinish = true;
+            }
+        }
     }
-    while (true);
+    while (!gameFinish);
+    Console.Clear();
+    playground.ShowGameOver(score);
+    Console.ReadLine();
 }
 else if (optionChoose == 2)
 {

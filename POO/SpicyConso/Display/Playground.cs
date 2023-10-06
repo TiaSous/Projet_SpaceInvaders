@@ -1,5 +1,4 @@
 ﻿using Model;
-
 namespace Display
 {
     public class Playground
@@ -72,6 +71,18 @@ namespace Display
         };
         private string _cursor = ">";
 
+        private string[] _gameOver =
+            {
+
+           " ██████╗  █████╗ ███╗   ███╗███████╗     ██████╗ ██╗   ██╗███████╗██████╗ ",
+           "██╔════╝ ██╔══██╗████╗ ████║██╔════╝    ██╔═══██╗██║   ██║██╔════╝██╔══██╗",
+           "██║  ███╗███████║██╔████╔██║█████╗      ██║   ██║██║   ██║█████╗  ██████╔╝",
+           "██║   ██║██╔══██║██║╚██╔╝██║██╔══╝      ██║   ██║╚██╗ ██╔╝██╔══╝  ██╔══██╗",
+           "╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗    ╚██████╔╝ ╚████╔╝ ███████╗██║  ██║",
+           " ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝     ╚═════╝   ╚═══╝  ╚══════╝╚═╝  ╚═╝"
+        };
+
+        private int _widthGameOver = 74;
         private string _score = "Score: ";
 
         private string _ammo = "Munition: ";
@@ -166,6 +177,20 @@ namespace Display
         {
             Console.SetCursorPosition(0, 1);
             Console.Write(_ammo + player.chargerAmmo.Count);
+        }
+        public void ShowGameOver(Score score)
+        {
+            int y = 0;
+            for (int i = 0; i < _titleMainMenu.Length; i++)
+            {
+                Console.SetCursorPosition(Config.SCREEN_WIDTH / 2 - _widthGameOver / 2, _startTitleHeight + i);
+                Console.WriteLine(_gameOver[i]);
+                y = Console.CursorTop;
+            }
+            Console.SetCursorPosition(Config.SCREEN_WIDTH / 2 - 4, y + 2);
+            Console.Write(_score + score._score);
+            Console.SetCursorPosition(Config.SCREEN_WIDTH / 2 - 6, y + 4);
+            Console.Write("Entre un nom: ");
         }
     }
 }
