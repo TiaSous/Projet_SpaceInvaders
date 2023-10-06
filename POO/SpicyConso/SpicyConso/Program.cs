@@ -4,7 +4,7 @@ using System.Numerics;
 
 Playground playground = new Playground();
 
-Score score = new Score();
+
 Cursor cursor = new Cursor();
 playground.Init(cursor);
 
@@ -16,12 +16,12 @@ ConsoleKeyInfo keyPressed;
 
 List<Ammo> ammoShotList = new List<Ammo>();
 List<Enemy> nbrEnemyList = new List<Enemy>();
-Player player = new Player();
+Score score = new Score();
 
 int frameNumber = 0;
 int optionChoose = 0;
 
-Random numberEnemie = new Random();
+
 
 do
 {
@@ -62,13 +62,16 @@ while (optionChoose == 0);
 
 if (optionChoose == 1)
 {
+    Player player = new Player();
+    Random numberEnemies = new Random();
+
     for (int i = 0; i < 10; i++)
     {
         nbrEnemyList.Add(new Enemy(i * 5 + 50));
     }
+    player.InitPlayer();
 
-
-    while (true)
+    do
     {
         //input
         if (Console.KeyAvailable)
@@ -83,15 +86,18 @@ if (optionChoose == 1)
                     player.PlayerMovementUpdate(1 * player._speed);
                     break;
                 case ConsoleKey.Spacebar:
-                    ammoShotList.Add(new Ammo(player._x + 2));
+                    if (player.chargerAmmo.Count > 0)
+                    {
+                        ammoShotList.Add(new Ammo(player._x + 2));
+                        player.chargerAmmo.RemoveAt(0);
+                    }
                     break;
                 default:
                     break;
             }
         }
 
-        //update
-        player.PlayerMovementUpdate(0);
+        //update ammo
         if (ammoShotList.Count > 0)
         {
             for (int i = ammoShotList.Count - 1; i >= 0; i--)
@@ -112,12 +118,20 @@ if (optionChoose == 1)
                         {
                             ammoShotList.Remove(ammoShotList[a]);
                             nbrEnemyList.Remove(nbrEnemyList[i]);
+                            player._enemiesKillToGiveAmmo++;
                             score.AddScore();
                             break;
                         }
                     }
                 }
             }
+        }
+
+        //add ammo
+        if (player._enemiesKillToGiveAmmo == 5)
+        {
+            player.AddAmmo(3);
+            player._enemiesKillToGiveAmmo = 0;
         }
 
         //enemies go down
@@ -156,11 +170,11 @@ if (optionChoose == 1)
         }
 
         playground.Show(player);
-        playground.Show(score);
-
+        playground.ShowScore(score);
+        playground.ShowAmmo(player);
         if (frameNumber == 200)
         {
-            for (int i = 0; i < numberEnemie.Next(1, 10); i++)
+            for (int i = 0; i < numberEnemies.Next(1, 10); i++)
             {
                 nbrEnemyList.Add(new Enemy(i * 5 + 50));
             }
@@ -168,7 +182,9 @@ if (optionChoose == 1)
         }
         frameNumber++;
         Thread.Sleep(3);
+        
     }
+    while (true);
 }
 else if (optionChoose == 2)
 {

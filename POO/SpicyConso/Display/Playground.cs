@@ -74,6 +74,8 @@ namespace Display
 
         private string _score = "Score: ";
 
+        private string _ammo = "Munition: ";
+
         private int _startTitleHeight = 5;
         public int _startMenuHeight = 15;
         public void Init(Cursor cursor)
@@ -155,10 +157,15 @@ namespace Display
             Console.Write(_cursor);
         }
         
-        public void Show(Score score)
+        public void ShowScore(Score score)
         {
             Console.SetCursorPosition(0, 0);
             Console.Write(_score + score._score);
+        }
+        public void ShowAmmo (Player player)
+        {
+            Console.SetCursorPosition(0, 1);
+            Console.Write(_ammo + player.chargerAmmo.Count);
         }
     }
 }

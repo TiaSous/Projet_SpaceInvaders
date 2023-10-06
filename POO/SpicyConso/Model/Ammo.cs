@@ -16,7 +16,10 @@ namespace Model
         {
             _x = x;
         }
-        
+        public Ammo()
+        {
+            _x = 0;
+        }
         public void AmmoUpdate()
         {
             if (_y <= 1)
