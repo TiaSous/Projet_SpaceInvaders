@@ -23,7 +23,6 @@ List<Enemy> nbrEnemyList = new List<Enemy>();
 int frameNumber = 0;
 int optionChoose = 0;
 
-
 do
 {
     optionChoose = 0;
@@ -198,6 +197,8 @@ if (optionChoose == 1)
     while (!gameFinish);
     Console.Clear();
     playground.ShowGameOver(score);
+    player._name = Console.ReadLine();
+    store.insert(player, score);
     Console.ReadLine();
 }
 else if (optionChoose == 2)

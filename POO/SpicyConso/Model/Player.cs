@@ -14,6 +14,7 @@ namespace Model
         const int LIMIT_AMMO = 150;
         public List <Ammo> chargerAmmo = new List <Ammo>();
         public int _enemiesKillToGiveAmmo = 0;
+        public string _name;
 
         public void InitPlayer()
         {
@@ -43,7 +44,10 @@ namespace Model
             }
         }
         
-
+        public void EnterName(string pseudo)
+        {
+            _name = pseudo;
+        }
 
     }
 }

@@ -12,8 +12,9 @@ namespace Storage
     public class Store
     {
         
+        public MySqlConnection connection;
         
-        public static void Connect ()
+        public void Connect ()
         {
             string server = "localhost";
             string uid = "root";
@@ -21,11 +22,13 @@ namespace Storage
             string database = "db_space_invaders";
             string port = "6033";
 
-            MySqlConnection conn = new MySqlConnection();
-            conn.ConnectionString = $"server={server}; uid={uid}; pwd={pwd}; database={database}; port={port}";
+            string connectString = $"server={server}; uid={uid}; pwd={pwd}; database={database}; port={port};";
+            
+            connection = new MySqlConnection(connectString);
+
 
             try {
-                conn.Open();
+                connection.Open();
                 Debug.Write("Reussie");
             }
 
@@ -33,6 +36,33 @@ namespace Storage
             { 
                 Debug.WriteLine(ex.Message);
             }
+        }
+
+        public void Close()
+        {
+            connection.Close();
+        }
+
+        public void displayScore()
+        {
+            Connect();
+            string command = "SELECT * FROM t_joueur ORDER BY jouNombrePoints DESC LIMIT 5";
+            MySqlCommand cmd = new MySqlCommand(command, connection);
+            MySqlDataReader reader = cmd.ExecuteReader();
+            for (int i = 1; reader.Read(); i++) 
+            {
+                Debug.WriteLine(i + ". " + reader["jouPseudo"] + "   " + reader["jouNombrePoints"]);
+            }
+        }
+
+        public void insert(Player player, Score score)
+        {
+            Connect();
+            string command = $"INSERT INTO t_joueur(jouPseudo, jouNombrePoints) VALUES ('{player._name}', {score._score});";
+            MySqlCommand cmd = new MySqlCommand(command, connection);
+            MySqlDataReader reader = cmd.ExecuteReader();
+            reader.Read();
+            Close();
         }
     }
 }
