@@ -43,3 +43,5 @@ C:\Users\pd51pyb\Documents\GitHub\Projet_SpaceInvaders\POO\SpicyConso\Display\ob
 C:\Users\pd51pyb\Documents\GitHub\Projet_SpaceInvaders\POO\SpicyConso\Display\obj\Debug\net6.0\refint\Display.dll
 C:\Users\pd51pyb\Documents\GitHub\Projet_SpaceInvaders\POO\SpicyConso\Display\obj\Debug\net6.0\Display.pdb
 C:\Users\pd51pyb\Documents\GitHub\Projet_SpaceInvaders\POO\SpicyConso\Display\obj\Debug\net6.0\ref\Display.dll
+C:\Users\pd51pyb\Documents\GitHub\Projet_SpaceInvaders\POO\SpicyConso\Display\bin\Debug\net6.0\Storage.dll
+C:\Users\pd51pyb\Documents\GitHub\Projet_SpaceInvaders\POO\SpicyConso\Display\bin\Debug\net6.0\Storage.pdb

@@ -461,7 +461,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Model": "1.0.0"
+          "Model": "1.0.0",
+          "Storage": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Display.dll": {}

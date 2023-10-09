@@ -1,4 +1,5 @@
 ﻿using Model;
+using Storage;
 namespace Display
 {
     public class Playground
@@ -153,13 +154,17 @@ namespace Display
                 Console.WriteLine(_titleRegles[i]);
             }
         }
-        public void ShowClassement()
+        public void ShowClassement(Store store)
         {
             for (int i = 0; i < _titleClassement.Length; i++)
             {
                 Console.SetCursorPosition(Config.SCREEN_WIDTH / 2 - _widthTitleClassement / 2, _startTitleHeight + i);
                 Console.WriteLine(_titleClassement[i]);
             }
+            store.displayScore(Config.SCREEN_WIDTH, _startMenuHeight);
+
+            Console.SetCursorPosition(Config.SCREEN_WIDTH / 2 - 7, _startMenuHeight + 10);
+            Console.Write("Appuyer sur une touche");
         }
 
         public void Show(Cursor cursor)
