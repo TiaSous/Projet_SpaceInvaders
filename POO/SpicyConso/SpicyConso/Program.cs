@@ -1,11 +1,14 @@
 ﻿using Model;
 using Display;
+using Storage;
 using System.Numerics;
 
 Playground playground = new Playground();
 
 
 Cursor cursor = new Cursor();
+Store store = new Store();
+
 playground.Init(cursor);
 
 
@@ -19,7 +22,6 @@ List<Enemy> nbrEnemyList = new List<Enemy>();
 
 int frameNumber = 0;
 int optionChoose = 0;
-
 
 
 do
