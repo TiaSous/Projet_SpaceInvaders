@@ -66,7 +66,7 @@ do
     }
     while (optionChoose == 0);
 
-    // jeux
+    // jeu
     if (optionChoose == 1)
     {
 
