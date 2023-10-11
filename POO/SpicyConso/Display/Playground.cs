@@ -9,7 +9,7 @@ namespace Display
          @" /|\ ",
          @"/|||\",
          @"|||||",
-         @" | | ",
+         @" | |  ",
      };                     //sprite du joueur
         private string[] _spriteEnemy =
     {
