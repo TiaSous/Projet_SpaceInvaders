@@ -119,6 +119,7 @@ namespace Storage
                 Console.Write("Connexion impossible");
                 Console.SetCursorPosition(widthWorld / 2 - 7, height + 6);
                 Console.Write("Appuyer sur une touche");
+                Console.ReadLine();
             }
         }
     }

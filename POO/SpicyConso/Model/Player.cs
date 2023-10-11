@@ -42,7 +42,7 @@ namespace Model
         /// <param name="numberAmmo"></param>
         public void AddAmmo(int numberAmmo)
         {
-            if (chargerAmmo.Count + numberAmmo <= chargerAmmo.Count)
+            if (chargerAmmo.Count + numberAmmo <= LIMIT_AMMO)
             {
                 for (int i = 0; i < numberAmmo; i++)
                 {
@@ -51,7 +51,7 @@ namespace Model
             }
             else
             {
-                while(chargerAmmo.Count == LIMIT_AMMO)
+                while(chargerAmmo.Count < LIMIT_AMMO)
                 {
                     chargerAmmo.Add(new Ammo());
                 }

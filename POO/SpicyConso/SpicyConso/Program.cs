@@ -169,6 +169,7 @@ do
                         foreach (Enemy nbrEnemy2 in nbrEnemyList)
                         {
                             nbrEnemy2.Down();
+                            nbrEnemy2.UpdateEnemy();
                         }
                     }
                 }
@@ -242,7 +243,6 @@ do
 
         // va insérer le score et le pseudo dans la base de données
         store.insert(player, score, Config.SCREEN_WIDTH, playground._startMenuHeight);
-        Console.ReadLine();
     }
 
     // montre le classement
