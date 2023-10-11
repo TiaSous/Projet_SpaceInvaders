@@ -36,7 +36,7 @@ namespace Storage
                 connection.Open();
                 Debug.Write("Reussie");
             }
-
+            //message d'erreur en cas de problème (dans la console debug)
             catch (MySqlException ex)
             { 
                 Debug.WriteLine(ex.Message);
@@ -58,24 +58,33 @@ namespace Storage
         /// <param name="height"></param>
         public void displayScore(int widthWorld, int height)
         {
-            Connect();
-
-            //requêtes SQL
-            string command = "SELECT * FROM t_joueur ORDER BY jouNombrePoints DESC LIMIT 5";
-
-            //représente une commande sur une base de donnée
-            MySqlCommand cmd = new MySqlCommand(command, connection);
-
-            //va lire la commande
-            MySqlDataReader reader = cmd.ExecuteReader();
-
-            //execute la commande
-            for (int i = 1; reader.Read(); i++) 
+            try
             {
-                Console.SetCursorPosition(widthWorld / 2 - 10, height + i);
-                Console.Write(i + ". " + reader["jouPseudo"]);
-                Console.SetCursorPosition(widthWorld / 2 + 15, height + i);
-                Console.Write(reader["jouNombrePoints"]);
+                Connect();
+
+                //requêtes SQL
+                string command = "SELECT * FROM t_joueur ORDER BY jouNombrePoints DESC LIMIT 5";
+
+                //représente une commande sur une base de donnée
+                MySqlCommand cmd = new MySqlCommand(command, connection);
+
+                //va lire la commande
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                //execute la commande
+                for (int i = 1; reader.Read(); i++)
+                {
+                    Console.SetCursorPosition(widthWorld / 2 - 10, height + i);
+                    Console.Write(i + ". " + reader["jouPseudo"]);
+                    Console.SetCursorPosition(widthWorld / 2 + 15, height + i);
+                    Console.Write(reader["jouNombrePoints"]);
+                }
+            }
+            //message d'erreur en cas de problème
+            catch
+            {
+                Console.SetCursorPosition(widthWorld / 2 - 7, height);
+                Console.Write("Connexion impossible");
             }
         }
 
@@ -84,22 +93,33 @@ namespace Storage
         /// </summary>
         /// <param name="player"></param>
         /// <param name="score"></param>
-        public void insert(Player player, Score score)
+        public void insert(Player player, Score score, int widthWorld, int height)
         {
-            Connect();
+            try
+            {
+                Connect();
 
-            //requête qui va insérer le score
-            string command = $"INSERT INTO t_joueur(jouPseudo, jouNombrePoints) VALUES ('{player._name}', {score._score});";
+                //requête qui va insérer le score
+                string command = $"INSERT INTO t_joueur(jouPseudo, jouNombrePoints) VALUES ('{player._name}', {score._score});";
 
-            //représente une commande sur une base de donnée
-            MySqlCommand cmd = new MySqlCommand(command, connection);
+                //représente une commande sur une base de donnée
+                MySqlCommand cmd = new MySqlCommand(command, connection);
 
-            //va lire la commande
-            MySqlDataReader reader = cmd.ExecuteReader();
+                //va lire la commande
+                MySqlDataReader reader = cmd.ExecuteReader();
 
-            //execute la commande
-            reader.Read();
-            Close();
+                //execute la commande
+                reader.Read();
+                Close();
+            }
+            //message d'erreur en cas de problème
+            catch
+            {
+                Console.SetCursorPosition(widthWorld / 2 - 7, height + 3);
+                Console.Write("Connexion impossible");
+                Console.SetCursorPosition(widthWorld / 2 - 7, height + 6);
+                Console.Write("Appuyer sur une touche");
+            }
         }
     }
 }

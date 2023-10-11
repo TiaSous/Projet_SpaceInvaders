@@ -10,12 +10,12 @@ namespace Display
          @"/|||\",
          @"|||||",
          @" | | ",
-     };
+     };                     //sprite du joueur
         private string[] _spriteEnemy =
     {
              "{@v@}","/\" \"\\"
-        };
-        private string[] _spriteAmmo = { "|" };
+        };                    //sprite de l'ennemie
+        private string[] _spriteAmmo = { "|" };                //sprite de la balle
 
         private string[] _titleMainMenu = 
         {
@@ -26,8 +26,8 @@ namespace Display
             "╚════██║██╔═══╝ ██╔══██║██║     ██╔══╝      ██║██║╚██╗██║╚██╗ ██╔╝██╔══██║██║  ██║██╔══╝  ██╔══██╗╚════██║",
             "███████║██║     ██║  ██║╚██████╗███████╗    ██║██║ ╚████║ ╚████╔╝ ██║  ██║██████╔╝███████╗██║  ██║███████║",
             "╚══════╝╚═╝     ╚═╝  ╚═╝ ╚═════╝╚══════╝    ╚═╝╚═╝  ╚═══╝  ╚═══╝  ╚═╝  ╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝╚══════╝"
-        };
-        private int _widthTitleMainMenu = 105;
+        };                  //sprite du titre du menu principal
+        private int _widthTitleMainMenu = 105;                 //largeur du titre du menu principale
 
         private string[] _titleOption = 
         {
@@ -37,8 +37,8 @@ namespace Display
            " ██║   ██║██╔═══╝    ██║   ██║██║   ██║██║╚██╗██║",
            " ╚██████╔╝██║        ██║   ██║╚██████╔╝██║ ╚████║",
            "  ╚═════╝ ╚═╝        ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝"
-        };
-        private int _widthTitleOption = 49;
+        };                    //sprite du titre du menu des options   
+        private int _widthTitleOption = 49;                    //largeur du titre du menu des options  
 
         private string[] _titleRegles = {
 
@@ -48,8 +48,8 @@ namespace Display
            "██╔══██╗██╔══╝  ██║   ██║██║     ██╔══╝  ╚════██║",
            "██║  ██║███████╗╚██████╔╝███████╗███████╗███████║",
            "╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚══════╝╚══════╝╚══════╝"
-        };
-        private int _widthTitleRegles = 49;
+        };                    //sprite du titre du menu des règles
+        private int _widthTitleRegles = 49;                    //largeur du titre du menu des règles  
 
         private string[] _titleClassement = { 
         
@@ -59,8 +59,8 @@ namespace Display
            " ██║     ██║     ██╔══██║╚════██║╚════██║██╔══╝  ██║╚██╔╝██║██╔══╝  ██║╚██╗██║   ██║   ",
            " ╚██████╗███████╗██║  ██║███████║███████║███████╗██║ ╚═╝ ██║███████╗██║ ╚████║   ██║   ",
            "  ╚═════╝╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝   ╚═╝   "
-        };
-        private int _widthTitleClassement = 87;
+        };                //sprite du titre du menu du classement
+        private int _widthTitleClassement = 87;                //largeur du titre du menu du classement 
 
         public string[] _mainMenu =
         {
@@ -69,8 +69,9 @@ namespace Display
             "Option",
             "Règles",
             "Quitter"
-        };
-        private string _cursor = ">";
+        };                        //options dans le jeu
+
+        private string _cursor = ">";                          //sprite du curseur
 
         private string[] _gameOver =
             {
@@ -81,15 +82,20 @@ namespace Display
            "██║   ██║██╔══██║██║╚██╔╝██║██╔══╝      ██║   ██║╚██╗ ██╔╝██╔══╝  ██╔══██╗",
            "╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗    ╚██████╔╝ ╚████╔╝ ███████╗██║  ██║",
            " ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝     ╚═════╝   ╚═══╝  ╚══════╝╚═╝  ╚═╝"
-        };
+        };                       //sprite du game over
+        private int _widthGameOver = 74;                       //largeur du titre game over
 
-        private int _widthGameOver = 74;
         private string _score = "Score: ";
 
         private string _ammo = "Munition: ";
 
-        private int _startTitleHeight = 5;
-        public int _startMenuHeight = 15;
+        private int _startTitleHeight = 5;                     //hauteur du quel le titre commence
+        public int _startMenuHeight = 15;                      //hauteur du quel les options dans le menu principale commence
+
+        /// <summary>
+        /// Configuration de départ
+        /// </summary>
+        /// <param name="cursor"></param>
         public void Init(Cursor cursor)
         {
             Console.CursorVisible = false;
@@ -98,7 +104,28 @@ namespace Display
             cursor._x = Config.SCREEN_WIDTH / 2 - 2;
             cursor._y = _startMenuHeight + 1;
         }
-        public void Show(Player player)
+
+        /// <summary>
+        /// rend le curseur visible
+        /// </summary>
+        public void VisibleCursor()
+        {
+            Console.CursorVisible = true;
+        }
+
+        /// <summary>
+        /// rend le curseur invisible
+        /// </summary>
+        public void NotVisibleCursor()
+        {
+            Console.CursorVisible = false;
+        }
+
+        /// <summary>
+        /// affiche le joueur
+        /// </summary>
+        /// <param name="player"></param>
+        public void ShowPlayer(Player player)
         {
             for (int i = 0; i < _spriteShip.Length; i++)
             {
@@ -106,7 +133,12 @@ namespace Display
                 Console.WriteLine(_spriteShip[i]);
             }
         }
-        public void Show(Enemy enemy)
+
+        /// <summary>
+        /// affiche l'ennemie
+        /// </summary>
+        /// <param name="enemy"></param>
+        public void ShowEnemie(Enemy enemy)
         {
             for (int i = 0; i < _spriteEnemy.Length; i++)
             {
@@ -115,7 +147,11 @@ namespace Display
             }
         }
 
-        public void Show(Ammo ammo)
+        /// <summary>
+        /// affiche la balle
+        /// </summary>
+        /// <param name="ammo"></param>
+        public void ShowAmmo(Ammo ammo)
         {
             for (int i = 0; i < _spriteAmmo.Length; i++)
             {
@@ -124,13 +160,18 @@ namespace Display
             }
         }
 
+        /// <summary>
+        /// affiche le menu principale
+        /// </summary>
         public void ShowTitleMainMenu()
         {
+            //titre
             for (int i = 0; i < _titleMainMenu.Length; i++)
             { 
                 Console.SetCursorPosition(Config.SCREEN_WIDTH/2 - _widthTitleMainMenu/2, _startTitleHeight + i);
                 Console.WriteLine(_titleMainMenu[i]);
             }
+            //option
             for (int i = 0; i < _mainMenu.Length; i++)
             {
                 Console.SetCursorPosition(Config.SCREEN_WIDTH / 2, _startMenuHeight + 1 + i);
@@ -138,6 +179,9 @@ namespace Display
             }
         }
 
+        /// <summary>
+        /// affiche les options
+        /// </summary>
         public void ShowOption()
         {
             for (int i = 0; i < _titleMainMenu.Length; i++)
@@ -146,6 +190,10 @@ namespace Display
                 Console.WriteLine(_titleOption[i]);
             }
         }
+
+        /// <summary>
+        /// affiche les règles
+        /// </summary>
         public void ShowRegles()
         {
             for (int i = 0; i < _titleRegles.Length; i++)
@@ -154,6 +202,11 @@ namespace Display
                 Console.WriteLine(_titleRegles[i]);
             }
         }
+
+        /// <summary>
+        /// affiche le classement
+        /// </summary>
+        /// <param name="store"></param>
         public void ShowClassement(Store store)
         {
             for (int i = 0; i < _titleClassement.Length; i++)
@@ -167,22 +220,40 @@ namespace Display
             Console.Write("Appuyer sur une touche");
         }
 
+        /// <summary>
+        /// affiche le curseur du menu principal
+        /// </summary>
+        /// <param name="cursor"></param>
         public void Show(Cursor cursor)
         {
             Console.SetCursorPosition(cursor._x, cursor._y);
             Console.Write(_cursor);
         }
         
+        /// <summary>
+        /// affiche le score
+        /// </summary>
+        /// <param name="score"></param>
         public void ShowScore(Score score)
         {
             Console.SetCursorPosition(0, 0);
             Console.Write(_score + score._score);
         }
+
+        /// <summary>
+        /// affiche le nombre de munitions restantes
+        /// </summary>
+        /// <param name="player"></param>
         public void ShowAmmo (Player player)
         {
             Console.SetCursorPosition(0, 1);
             Console.Write(_ammo + player.chargerAmmo.Count);
         }
+
+        /// <summary>
+        /// affiche l'écran de fin
+        /// </summary>
+        /// <param name="score"></param>
         public void ShowGameOver(Score score)
         {
             int y = 0;

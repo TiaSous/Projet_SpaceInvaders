@@ -8,8 +8,12 @@ namespace Model
 {
     public class Score
     {
-        public int _score;
+        // attribut
+        public int _score;          // le score de la partie
 
+        /// <summary>
+        /// rajoute 10 de score à chaque ennemi tué
+        /// </summary>
         public void AddScore()
         {
             _score += 10;

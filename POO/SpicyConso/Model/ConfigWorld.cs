@@ -8,9 +8,9 @@ namespace Model
 {
     public class ConfigWorld
     {
-        public const int WORLD_WIDTH_LEFT = 25;
-        public const int WORLD_WIDTH_RIGHT = 125;
+        public const int WORLD_WIDTH_LEFT = 25;                     //bordure gauche du jeu
+        public const int WORLD_WIDTH_RIGHT = 125;                   //bordure droite du jeu
 
-        public const int POSITION_Y_PLAYER_FOR_START = 30;
+        public const int POSITION_Y_PLAYER_FOR_START = 30;          // position y du joueur lorsqu'il commence
     }
 }
