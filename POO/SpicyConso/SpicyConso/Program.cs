@@ -205,7 +205,7 @@ do
             // va ajouter des ennemies toutes les 200 frames
             if (frameNumber == 200)
             {
-                for (int i = 0; i < numberEnemies.Next(1, 10); i++)
+                for (int i = 0; i < numberEnemies.Next(5, 11); i++)
                 {
                     nbrEnemyList.Add(new Enemy(i * 5 + 50));
                 }
