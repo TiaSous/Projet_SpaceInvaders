@@ -14,13 +14,35 @@ namespace Model.Tests
         [TestMethod()]
         public void PlayerMovementUpdateTest()
         {
+            //arrange
             Player player = new Player();
             int ancienX = player._x;
+
+            //act & assert
             player.PlayerMovementUpdate(1 * player.Speed);
             Assert.AreEqual(player._x, ancienX + player.Speed);
-            ancienX = player._x;
+
+            //act & assert
             player.PlayerMovementUpdate(-1 * player.Speed);
-            Assert.AreEqual(player._x, ancienX - player.Speed);
+            Assert.AreEqual(player._x, ancienX);
+        }
+
+        [TestMethod()]
+        public void AddAmmoTest()
+        {
+            //arrange
+            Player player = new Player();
+            int charger = player.chargerAmmo.Count;
+
+            //act
+            for (int i = charger - 1; i >= 0; i--)
+            {
+                player.chargerAmmo.RemoveAt(i);
+            }
+            player.AddAmmo(3);
+
+            //assert
+            Assert.AreEqual(3, player.chargerAmmo.Count);
         }
     }
 }

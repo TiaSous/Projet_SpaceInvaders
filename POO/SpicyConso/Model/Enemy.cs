@@ -10,7 +10,7 @@ namespace Model
         private int RightOrLeft = 1;                                        // s'il va à gauche ou à droite 1 = droite, -1 = gauche 
 
         /// <summary>
-        /// Constructeur pour décider de la hauteur des ennemies
+        /// Constructeur pour décider ou commence l'ennemie sur la ligne horizontal 
         /// </summary>
         /// <param name="x"></param>
         public Enemy(int x)
@@ -25,6 +25,7 @@ namespace Model
         {
             _x += NBRCASEDEPLACE * RightOrLeft;
         }
+
         /// <summary>
         /// fais descendre l'ennemie de 2 case (hauteur de l'ennemi) et va changer la direction x de l'ennemie, c'est à dire s'il va à gaucher ou à droite
         /// </summary>
