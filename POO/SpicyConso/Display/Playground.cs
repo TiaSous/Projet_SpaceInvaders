@@ -31,14 +31,14 @@ namespace Display
 
         private string[] _titleOption = 
         {
-           "  ██████╗ ██████╗ ████████╗██╗ ██████╗ ███╗   ██╗",
-           " ██╔═══██╗██╔══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║",
-           " ██║   ██║██████╔╝   ██║   ██║██║   ██║██╔██╗ ██║",
-           " ██║   ██║██╔═══╝    ██║   ██║██║   ██║██║╚██╗██║",
-           " ╚██████╔╝██║        ██║   ██║╚██████╔╝██║ ╚████║",
-           "  ╚═════╝ ╚═╝        ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝"
+           " ██████╗ ██████╗ ████████╗██╗ ██████╗ ███╗   ██╗███████╗",
+           "██╔═══██╗██╔══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║██╔════╝",
+           "██║   ██║██████╔╝   ██║   ██║██║   ██║██╔██╗ ██║███████╗",
+           "██║   ██║██╔═══╝    ██║   ██║██║   ██║██║╚██╗██║╚════██║",
+           "╚██████╔╝██║        ██║   ██║╚██████╔╝██║ ╚████║███████║",
+           " ╚═════╝ ╚═╝        ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝"
         };                    //sprite du titre du menu des options   
-        private int _widthTitleOption = 49;                    //largeur du titre du menu des options  
+        private int _widthTitleOption = 56;                    //largeur du titre du menu des options  
 
         private string[] _titleRegles = {
 
@@ -66,7 +66,7 @@ namespace Display
         {
             "Jouer",
             "Classement",
-            "Option",
+            "Options",
             "Règles",
             "Quitter"
         };                        //options dans le jeu
