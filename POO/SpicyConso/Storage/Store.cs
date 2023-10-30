@@ -20,13 +20,13 @@ namespace Storage
         public void Connect ()
         {
             string server = "localhost";                                                        //adresse du serveur
-            string uid = "root";                                                                //nom de l'utilisateur
+            string userId = "root";                                                             //nom de l'utilisateur
             string pwd = "root";                                                                //mot de passe
             string database = "db_space_invaders";                                              //nom de la base de données
-            string port = "6033";                                                               //nom du port
+            string port = "6033";                                                               //numéro du port
 
             //proporiété pour la connection à une base de données mysql
-            string connectString = $"server={server}; uid={uid}; pwd={pwd}; database={database}; port={port};";
+            string connectString = $"server={server}; uid={userId}; pwd={pwd}; database={database}; port={port};";
 
             //ajout des propriétés au serveur MySQL
             connection = new MySqlConnection(connectString);
